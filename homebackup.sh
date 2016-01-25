@@ -4,7 +4,7 @@
 #echo "Availiable home folders:"
 #ls /home
 #echo
-#echo "Which home foler would you like to backup?:"
+#echo "Which home folder would you like to backup?:"
 #read HOMEFOLDER
 #echo
 ####################################################
@@ -12,7 +12,7 @@
 ####################################################
 HOMEFOLDER="ed"
 BACKUPDIR=/home
-TIMESTAMP=$(date | awk '{ print $1"_"$2"_"$3"_"$6 }')
+TIMESTAMP=$(date | awk '{ print $1"_"$2"_"$3"_"$4"_"$5"_"$6 }')
 TARFILENAME="/var/tmp/$TIMESTAMP.$HOMEFOLDER.tar"
 GZIPFILENAME="$TARFILENAME.gz"
 REMOTESERVER="10.1.10.73"
@@ -46,5 +46,6 @@ date >> $LOGFILE
 echo "Backup complete."
 
 cd /var/tmp
-rm $DELGZIPFILE
+rm  $DELDATE.$HOMEFOLDER.tar.gz
+
 echo "Backups 15 days ago have been removed."
